@@ -6,8 +6,8 @@ export default function TechnologyNews() {
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const response = await fetchTechnologyNews();
-      console.log(response);
+      const response = await fetchTechnologyNews(); // wait for the promise to resolve
+      console.log("Fetched articles:", response); // log the fetched articles
       setArticles(response);
     };
     fetchArticles();
@@ -23,7 +23,8 @@ export default function TechnologyNews() {
 
   return (
     <div>
-      <div className="flex flex-row items-center justify-between my-3 px-1">
+
+      <div id="top" className="flex flex-row items-center justify-between my-3 px-1">
         <div>
           <a href="/" className="text-xs text-gray-400 ">
             Home
@@ -37,8 +38,9 @@ export default function TechnologyNews() {
           <h1 className="text-sm">Technology News</h1>
         </div>
       </div>
+      
 
-      <article className="grid grid-cols-1">
+      <article className="grid grid-cols-1 relative">
         {articles &&
           articles.map((article, index) => (
             <div key={index}>
@@ -51,9 +53,16 @@ export default function TechnologyNews() {
                   <p className="my-4 text-md text-black">
                     {article.description}
                   </p>
-                  <h6 className="text-sm text-gray-500">— {article.author}</h6>
+                  <div className="flex flex-row items-center justify-between">
+                    <h6 className="text-sm text-gray-500">— {article.author}</h6>
+                    <a href={article.url} target="_blank" rel="noreferrer" className="px-3">
+                      <span className="text-sm text-blue-500">
+                        Read full article
+                      </span>
+                    </a>
+                  </div>
                 </div>
-                <div className="overflow-hidden my-4 pl-4">
+                <div className="overflow-hidden my-4 md:pl-4">
                   <img
                     src={article.urlToImage}
                     alt={article.title}
@@ -63,7 +72,11 @@ export default function TechnologyNews() {
               </div>
             </div>
           ))}
+          <div className="fixed bottom-0 right-0 z-50 p-4  bg-white text-black">
+        <button className="text-xs cursor-pointer border-b py-1" onClick={() => window.scrollTo(0, 0)}>Back to Top</button>
+      </div>
       </article>
+
     </div>
   );
 }

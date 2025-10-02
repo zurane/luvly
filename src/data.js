@@ -16,28 +16,33 @@ export const data = [
     {
         id: 2,
         name: "Fashion",
+        urlPath: "fashion",
         imageUrl: productThree
     },
 
     {
         id: 3,
         name: "Home Appliances",
+        urlPath: "home-appliances",
         imageUrl: productFive
     },
 
     {
         id: 4,
         name: "Furniture",
+        urlPath: "furniture",
         imageUrl: productFour
     },
     {
         id: 5,
         name: "Clothing",
+        urlPath: "clothing",
         imageUrl: productOne
     },
     {
         id: 6,
         name: "Jewellery",
+        urlPath: "jewellery",
         imageUrl: productSix
     }
 ];
