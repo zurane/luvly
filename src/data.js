@@ -9,7 +9,8 @@ import productSix from "./assets/productImages/Home_Page_150825_Desktopi_JEWELLE
 export const data = [
     {
         id: 1,
-        name: "Electronics",
+        name: "Technology",
+        urlPath: "technology",
         imageUrl: productTwo
     },
     {

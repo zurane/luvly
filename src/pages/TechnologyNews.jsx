@@ -13,16 +13,28 @@ export default function TechnologyNews() {
     fetchArticles();
   }, []);
 
+  const currentPath = window.location.pathname; // Get current path of the page
+
+  // Helper function to capitalize first letter
+  const breadcrumbPath = (currentPath) => {
+    if (!currentPath) return "";
+    return currentPath.charAt(0).toUpperCase() + currentPath.slice(1);
+  };
+
   return (
     <div>
-
       <div className="flex flex-row items-center justify-between my-3 px-1">
         <div>
-          <span className="text-xs text-gray-400">News / </span>{" "}
-          <span className="text-xs text-gray-400">Technology</span>
+          <a href="/" className="text-xs text-gray-400 ">
+            Home
+          </a>
+          <span className="text-xs text-gray-400 px-1 ">/</span>
+          <a href={currentPath} className="text-xs text-gray-400">
+            {breadcrumbPath(currentPath.replace("/", ""))}
+          </a>
         </div>
         <div>
-          <h1>Technology News</h1>
+          <h1 className="text-sm">Technology News</h1>
         </div>
       </div>
 
@@ -36,7 +48,9 @@ export default function TechnologyNews() {
                     {article.source.name}
                   </span>
                   <h2 className="font-bold  my-4 text-2xl">{article.title}</h2>
-                  <p className="my-4 text-md text-black">{article.description}</p>
+                  <p className="my-4 text-md text-black">
+                    {article.description}
+                  </p>
                   <h6 className="text-sm text-gray-500">— {article.author}</h6>
                 </div>
                 <div className="overflow-hidden my-4 pl-4">

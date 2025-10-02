@@ -1,13 +1,17 @@
 import "./App.css";
-import CategoryCards from "./components/organisms/CategoryCards";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
 import TechnologyNews from "./pages/TechnologyNews";
 
 function App() {
   return (
-    <>
-      {/* <CategoryCards /> */}
-      <TechnologyNews />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="technology" element={<TechnologyNews />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
+
 export default App;

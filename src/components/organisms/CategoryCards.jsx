@@ -6,7 +6,7 @@ export default function CategoryCards() {
     <article className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
       {data &&
         data.map((category) => (
-          <a href={`/category/${category.id}`} key={category.id}>
+          <a href={`${category.urlPath}`} key={category.id}>
             <ProductCategoryCard
               categoryImage={category.imageUrl}
               categoryName={category.name}
