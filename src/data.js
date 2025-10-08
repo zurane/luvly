@@ -1,10 +1,10 @@
 
 import productOne from "./assets/productImages/Home_Page_150825_Desktopi_HOME_800_X400_63359877cf.webp";
-import productTwo from "./assets/productImages/Home_Page_150825_Desktopi_TECH_800_X400_5437182eec.webp";
-import productThree from "./assets/productImages/Home_Page_150825_Desktopi_FASHION_800_X400_5437182eec.jpg";
-import productFour from "./assets/productImages/Home_Page_150825_Desktopi_FURNISHER_800_X400_5437182eec.jpg";
-import productFive from "./assets/productImages/Home_Page_150825_Desktopi_APPLIANCES_800_X400_5437182eec.jpg";
-import productSix from "./assets/productImages/Home_Page_150825_Desktopi_JEWELLERY_800_X400_5437182eec.jpg";
+import productTwo from "./assets/productImages/green-walk.jpg";
+import productThree from "./assets/productImages/fashion-cate.jpg";
+import productFour from "./assets/productImages/music-category.jpg";
+import productFive from "./assets/productImages/design-category.jpg";
+import productSix from "./assets/productImages/money-category.jpg";
 
 export const data = [
     {
@@ -15,34 +15,34 @@ export const data = [
     },
     {
         id: 2,
-        name: "Fashion",
-        urlPath: "fashion",
+        name: "Retail",
+        urlPath: "retail",
         imageUrl: productThree
     },
 
     {
         id: 3,
-        name: "Home Appliances",
-        urlPath: "home-appliances",
+        name: "Design",
+        urlPath: "design",
         imageUrl: productFive
     },
 
     {
         id: 4,
-        name: "Furniture",
-        urlPath: "furniture",
+        name: "Music",
+        urlPath: "music",
         imageUrl: productFour
     },
     {
         id: 5,
-        name: "Clothing",
-        urlPath: "clothing",
+        name: "Politics",
+        urlPath: "politics",
         imageUrl: productOne
     },
     {
         id: 6,
-        name: "Jewellery",
-        urlPath: "jewellery",
+        name: "Finance",
+        urlPath: "finance",
         imageUrl: productSix
     }
 ];

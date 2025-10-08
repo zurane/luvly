@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import fetchNews from "../api.js";
 
-export default function TechnologyNews() {
+export default function FinancialNews() {
   const [articles, setArticles] = useState([]);
    const currentDate = new Date().toISOString().split('T')[0]; 
     console.log('Current date:', currentDate); 
 
   useEffect(() => {
     const fetchArticles = async () => {
-      const response = await fetchNews('technology'); // wait for the promise to resolve
+      const response = await fetchNews('finance'); // wait for the promise to resolve
       console.log("Fetched articles:", response);
       console.log('Hello');                                               // log the fetched articles
       setArticles(response);
@@ -17,7 +17,7 @@ export default function TechnologyNews() {
   }, []);
 
   const currentPath = window.location.pathname; // Get current path of the page
-   const label = currentPath.replace("/", "").charAt(0).toUpperCase() + currentPath.replace("/", "").slice(1) + ' ' + 'News';
+  const label = currentPath.replace("/", "").charAt(0).toUpperCase() + currentPath.replace("/", "").slice(1) + ' ' + 'News';
 
   // Helper function to capitalize first letter
   const breadcrumbPath = (currentPath) => {
