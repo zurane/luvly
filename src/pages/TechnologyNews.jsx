@@ -83,7 +83,7 @@ export default function TechnologyNews() {
                     </div>
                   </div>
                   <div className="overflow-hidden my-4 md:pl-4">
-                    <Skeleton height={300} />
+                    <Skeleton height={250} />
                   </div>
                 </div>
               </div>
@@ -103,9 +103,9 @@ export default function TechnologyNews() {
                     <p className="my-4 text-md text-black">
                       {article.description}
                     </p>
-                    <div className="flex flex-row items-center justify-between">
+                    <div className="flex flex-row items-center justify-between my-2">
                       <h6 className="text-sm text-gray-500">
-                        — {article.author}
+                      – {article.author}
                       </h6>
                       <a
                         href={article.url}

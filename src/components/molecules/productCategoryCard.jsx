@@ -12,7 +12,9 @@ export default function ProductCategoryCard(props) {
         <h3 className="text-center text-xl tracking-normal text-white font-extrabold p-2">
           {props.categoryName}
         </h3>
-        <ArrowRight color="white" size={40} strokeWidth={1} />
+        <div className="bg-black p-2 rounded-full">
+          <ArrowRight color="white" size={30} strokeWidth={1} />
+        </div>
       </div>
     </div>
   );

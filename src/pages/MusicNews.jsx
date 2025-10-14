@@ -84,7 +84,7 @@ export default function MusicNews() {
                     </div>
                   </div>
                   <div className="overflow-hidden my-4 md:pl-4">
-                    <Skeleton height={300} />
+                    <Skeleton height={250} />
                   </div>
                 </div>
               </div>
@@ -106,7 +106,7 @@ export default function MusicNews() {
                     </p>
                     <div className="flex flex-row items-center justify-between">
                       <h6 className="text-sm text-gray-500">
-                        — {article.author}
+                        – {article.author}
                       </h6>
                       <a
                         href={article.url}
