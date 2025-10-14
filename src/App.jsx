@@ -17,8 +17,8 @@ function App() {
         <Route path="retail" element={<RetailNews />} />
         <Route path="politics" element={<PoliticsNews />} />
         <Route path="finance" element={<FinancialNews />} />
-        <Route path="music" element={<MusicNews />} />
-        <Route path="design" element={<DesignNews />} />
+        <Route path="entertainment" element={<MusicNews />} />
+        <Route path="business" element={<DesignNews />} />
       </Routes>
     </BrowserRouter>
   );

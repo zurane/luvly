@@ -1,23 +1,36 @@
 import { useState, useEffect } from "react";
 import fetchNews from "../api.js";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function FinancialNews() {
   const [articles, setArticles] = useState([]);
-   const currentDate = new Date().toISOString().split('T')[0]; 
-    console.log('Current date:', currentDate); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true); // Set loading to true when fetching starts
     const fetchArticles = async () => {
-      const response = await fetchNews('finance'); // wait for the promise to resolve
-      console.log("Fetched articles:", response);
-      console.log('Hello');                                               // log the fetched articles
-      setArticles(response);
+      try {
+        const response = await fetchNews("finance");
+        console.log("Fetched articles:", response);
+        setTimeout(() => {
+          setArticles(response);
+          setLoading(false);
+        }, 2000); // Simulate loading for 2 seconds
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+        setLoading(false);
+      }
     };
     fetchArticles();
   }, []);
 
   const currentPath = window.location.pathname; // Get current path of the page
-  const label = currentPath.replace("/", "").charAt(0).toUpperCase() + currentPath.replace("/", "").slice(1) + ' ' + 'News';
+  const label =
+    currentPath.replace("/", "").charAt(0).toUpperCase() +
+    currentPath.replace("/", "").slice(1) +
+    " " +
+    "News";
 
   // Helper function to capitalize first letter
   const breadcrumbPath = (currentPath) => {
@@ -46,44 +59,76 @@ export default function FinancialNews() {
       </div>
 
       <article className="grid grid-cols-1 relative">
-        {articles &&
-          articles.map((article, index) => (
-            <div key={index}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 border-t border-gray-200 my-2">
-                <div className="text-left">
-                  <span className="text-black text-sm bg-green-300 py-1 px-2 mt-1">
-                    {article.source.name}
-                  </span>
-                  <h2 className="font-bold  my-4 text-2xl">{article.title}</h2>
-                  <p className="my-4 text-md text-black">
-                    {article.description}
-                  </p>
-                  <div className="flex flex-row items-center justify-between">
-                    <h6 className="text-sm text-gray-500">
-                      — {article.author}
-                    </h6>
-                    <a
-                      href={article.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="px-3"
-                    >
-                      <span className="text-sm text-blue-500">
-                        Read full article
-                      </span>
-                    </a>
+        {/* Render skeleton placeholders while loading */}
+        {loading
+          ? // Render skeleton placeholders while loading
+            Array.from({ length: 3 }).map((_, index) => (
+              <div key={index}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-2">
+                  <div className="text-left">
+                    <span className="text-black text-sm py-1 mt-1">
+                      <Skeleton width={100} />
+                    </span>
+                    <h2 className="font-bold  my-4 text-2xl">
+                      <Skeleton count={2} />
+                    </h2>
+                    <p className="my-4 text-md text-black">
+                      <Skeleton count={3} />
+                    </p>
+                    <div className="flex flex-row items-center justify-between">
+                      <h6 className="text-sm text-gray-500">
+                        <Skeleton width={100} />
+                      </h6>
+                      <Skeleton width={150} />
+                    </div>
+                  </div>
+                  <div className="overflow-hidden my-4 md:pl-4">
+                    <Skeleton height={300} />
                   </div>
                 </div>
-                <div className="overflow-hidden my-4 md:pl-4">
-                  <img
-                    src={article.urlToImage}
-                    alt={article.title}
-                    className="object-fit"
-                  />
+              </div>
+            ))
+          : // Render articles once loaded
+            articles &&
+            articles.map((article, index) => (
+              <div key={index}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 border-t border-gray-200 my-2">
+                  <div className="text-left">
+                    <span className="text-black text-sm bg-green-300 py-1 px-2 mt-1">
+                      {article.source.name}
+                    </span>
+                    <h2 className="font-bold  my-4 text-2xl">
+                      {article.title}
+                    </h2>
+                    <p className="my-4 text-md text-black">
+                      {article.description}
+                    </p>
+                    <div className="flex flex-row items-center justify-between">
+                      <h6 className="text-sm text-gray-500">
+                        — {article.author}
+                      </h6>
+                      <a
+                        href={article.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-3"
+                      >
+                        <span className="text-sm text-blue-500">
+                          Read full article
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="overflow-hidden my-4 md:pl-4">
+                    <img
+                      src={article.urlToImage}
+                      alt={article.title}
+                      className="object-fit"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         <div className="fixed bottom-0 right-0 z-50 p-4  bg-white text-black">
           <button
             className="text-xs cursor-pointer border-b py-1"

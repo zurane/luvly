@@ -22,15 +22,15 @@ export const data = [
 
     {
         id: 3,
-        name: "Design",
-        urlPath: "design",
+        name: "Business",
+        urlPath: "business",
         imageUrl: productFive
     },
 
     {
         id: 4,
-        name: "Music",
-        urlPath: "music",
+        name: "Entertainment",
+        urlPath: "entertainment",
         imageUrl: productFour
     },
     {
